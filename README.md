@@ -5,7 +5,7 @@ Wieża Hanoi napisana w ruby.
 
 Przed uruchomieniem trzeba zainstalować potrzebne gemy za pomocą komendy: bundle install \
 Następnie za pomocą: bundle exec ruby script.rb \
-Można uruchomić program, który rozwiązuje wieżę Hanoi dla liczby pierścieni/krążków podanych przez użytkownika. \
+Można uruchomić program, który rozwiązuje wieżę Hanoi dla liczby pierścieni/krążków podanych przez użytkownika. 
 
 # Testy
 Testy znajdują się w folderze /spec \
@@ -14,5 +14,5 @@ Testy można uruchomić poprzez komendę 'rspec' w folderze projektu
 
 # Dokumentacja 
 Dokumentacja (stworzona za pomoca yard) znajdują sie w foldrze /doc \
-Dokumentacja tworzona jest za pomocą komendy:  yard doc hanoi_tower.rb './spec/*spec.rb' --plugin rspec \
+Dokumentacja tworzona jest za pomocą komendy:  yard doc hanoi_tower.rb './spec/*spec.rb' --plugin rspec 
 
