@@ -5,8 +5,11 @@ num_discs = 0
 
 #Reading user input
 while num_discs < 1 || num_discs.is_a?(String)
-    puts "Podaj liczbę pierścieni: "
+    puts "Podaj liczbę pierścieni (liczba całkowita, większa od zera): "
     num_discs = gets.to_i
+    if num_discs < 1 || num_discs.is_a?(String)
+      puts "Podane dane są w złym formacie."
+    end
   end
 
 # Create and initialize tower of Hanoi
