@@ -4,7 +4,7 @@ require './hanoi_tower.rb'
 num_discs = 0
 
 #Reading user input
-while num_discs < 1 do
+while num_discs < 1 || num_discs.is_a?(String)
     puts "Podaj liczbę pierścieni: "
     num_discs = gets.to_i
   end
