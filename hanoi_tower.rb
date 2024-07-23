@@ -71,29 +71,35 @@ class HanoiTower
   # @return [Nothing]
   def display
     max_height = @discs
-    tower_width = @discs * 2 + 1
+    tower_width = @discs * 2 + 1  
   
-    @towers.each_with_index do |tower, index|
-      puts "Tower #{index + 1}:"
-      
-      display_tower = tower.dup.fill(0, tower.size...max_height)
-      
-      display_tower.reverse.each do |disc|
-        if disc == 0
-          puts (" " * (tower_width / 2)) + "|" + (" " * (tower_width / 2))
-        else
-          disc_str = "#" * (disc * 2 - 1)
-          spaces = (tower_width - disc_str.size) / 2
-          puts (" " * spaces) + disc_str + (" " * spaces)
+    display_rows = Array.new(max_height) { "" } #tablica, stringów, gdzie każdy to jeden wiersz
+  
+    @towers.each_with_index do |tower, index|                     
+      display_tower = tower.dup.fill(0, tower.size...max_height) #kopia tablicy, gdzie wypełnia się ją zerami, jak nie ma krążka
+  
+      display_tower.reverse.each_with_index do |disc, row|
+        if disc == 0      #sytuacja jak nie ma krążka to: "    |      " odpowiednia ilość spacji plus kij
+          display_rows[row] += (" " * (tower_width / 2) + "|" + " " * (tower_width / 2)) + "   "  #na koniec trzy spacje, które oddzielają wieże
+        else  #sytuacja jak jest krążek
+          disc_str = "#" * (disc * 2 - 1) #obliczenie szerokości krążka (nieparzysta liczba dla ładnego wyświetlana)
+          spaces = (tower_width - disc_str.size) / 2  #obliczenie ile spacji jest potrzebnych 
+          display_rows[row] += (" " * spaces + disc_str + " " * spaces) + "   "  #np. "  ###  "
         end
       end
-  
-      puts "-" * tower_width
-      puts "\n"
     end
+  
+    #wypisanie wszystkich wierszy - czyli wyświetlenie wiezy
+    display_rows.each { |row| puts row }    
+    
+    #wyświetlenie podstawki i oddzielenie wieży
+    @towers.each { |_| print "-" * tower_width + "   " }  
+    puts "\n"
+  
     sleep(1)
     system('clear')
   end
+  
   
   # Method that display current towers state (in array)
   #
